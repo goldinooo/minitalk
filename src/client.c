@@ -37,9 +37,9 @@ int	main(int ac, char **av)
 	if (ac == 3)
 	{
 		server_pid = ft_atoi(av[1]);
-		if (server_pid < 3)
+		if (server_pid <= 0)
 		{
-			ft_putstr("wrong pid :)");
+			ft_putstr("Invalid pid :)");
 			return (0);
 		}
 		while (av[2][i])

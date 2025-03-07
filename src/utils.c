@@ -16,6 +16,14 @@ void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
+int ft_isspace(char c)
+{
+	return(c >= 9 && c <= 13) || c == 32;
+}
+int	ft_isdigit(int c)
+{
+	return(c >= 48 && c <= 57);
+}
 
 void	ft_putstr(char *s)
 {
@@ -38,18 +46,7 @@ int ft_strlen(char *s)
 		i++;
 	return (i);
 }
-int ft_isspace(char c)
-{
-	return(c >= 9 && c <= 13) || c == 32;
-}
 
-int	ft_isdigit(int c)
-{
-	if (c >= 48 && c <= 57)
-		return (1);
-	else
-		return (0);
-}
 int	ft_atoi(const char *str)
 {
 	int	n;

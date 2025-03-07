@@ -17,27 +17,27 @@ int v_bits = 7;
 
 void signal_handler(int signal, siginfo_t *info ,void *s)
 {
-	static int i;
+	static int mychar;
 	static int prev_pid;
 
 	(void)s;
 	if (signal != SIGUSR1 && signal != SIGUSR2)
-        return;
+    	return;
 	if (info->si_pid != prev_pid)
 	{
 		prev_pid = info->si_pid;
-		i = 0;
+		mychar = 0;
 		v_bits = 7;		
 	}
 	if (signal == SIGUSR1)
-		i = (1 << v_bits) | i;
+		mychar = (1 << v_bits) | mychar;
 	v_bits--;
 	if (v_bits < 0)
 	{
-		if (i == '\0')
+		if (mychar == '\0')
 			kill(info->si_pid, SIGUSR1);
-		ft_putchar(i);
-		i = 0;
+		ft_putchar(mychar);
+		mychar = 0;
 		v_bits = 7;
 	}
 }

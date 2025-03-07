@@ -36,7 +36,7 @@ void	send_bits_at_len(pid_t pid, char *str)
 				kill(pid, SIGUSR1);
 			else
 				kill(pid, SIGUSR2);
-			usleep(90);
+			usleep(100);
 			bit--;
 		}
 		idx++;
@@ -53,12 +53,12 @@ int	main(int ac, char **av)
 		server_pid = ft_atoi(av[1]);
 		sig.sa_handler = delivered;
 		sigaction(SIGUSR1, &sig , NULL);
-		send_bits_at_len(server_pid, av[2]);
-		if (server_pid < 3)
+		if (server_pid <= 0)
 		{
 			ft_putstr("wrong pid :)");
 			return (0);
 		}
+		send_bits_at_len(server_pid, av[2]);
 	}
 	else
 		ft_putstr("wrong argument :), Try: ./client <PID> <MESSAGE>");
