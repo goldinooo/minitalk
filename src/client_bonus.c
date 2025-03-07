@@ -13,14 +13,13 @@
 #include "../includes/minitalk.h"
 #include <sys/signal.h>
 
-
 static void delivered(int signal)
 {
 	(void)signal;
 	ft_putstr("✅\n");
 }
 
-void	send_bits(pid_t pid, char *str)
+void	send_bits_at_len(pid_t pid, char *str)
 {
 	int	bit;
 	int idx;
@@ -47,16 +46,14 @@ void	send_bits(pid_t pid, char *str)
 int	main(int ac, char **av)
 {
 	pid_t				server_pid;
-	int					i;
 	struct sigaction	sig;
 	
-	i = 0;
 	if (ac == 3)
 	{
 		server_pid = ft_atoi(av[1]);
 		sig.sa_handler = delivered;
 		sigaction(SIGUSR1, &sig , NULL);
-		send_bits(server_pid, av[2]);
+		send_bits_at_len(server_pid, av[2]);
 		if (server_pid < 3)
 		{
 			ft_putstr("wrong pid :)");

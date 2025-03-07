@@ -19,12 +19,17 @@
 # include <string.h>
 # include <unistd.h>
 
+void	ft_putchar(char c);
 void	ft_putstr(char *s);
+int		ft_strlen(char *s);
+int		ft_isspace(char c);
 int		ft_isdigit(int c);
-void	signal_handler(int signum, siginfo_t *info, void *p);
-void	ft_signal_handler(int signal);
 int		ft_atoi(const char *str);
 void	ft_putnbr(int n);
-int 	ft_strlen(char *s);
-void	ft_putchar(char c);
+
+void	signal_handler(int signum, siginfo_t *info, void *p);
+void	ft_signal_handler(int signal);
+void	send_bits(pid_t pid, char c);
+void	send_bits_at_len(pid_t pid, char *str);
+
 #endif

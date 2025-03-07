@@ -38,6 +38,10 @@ int ft_strlen(char *s)
 		i++;
 	return (i);
 }
+int ft_isspace(char c)
+{
+	return(c >= 9 && c <= 13) || c == 32;
+}
 
 int	ft_isdigit(int c)
 {
@@ -52,8 +56,7 @@ int	ft_atoi(const char *str)
 	int	rest;
 
 	n = 1;
-	while (*str == '\t' || *str == '\n' || *str == '\v' || *str == '\f'
-		|| *str == '\r' || *str == ' ')
+	while (ft_isspace(*str))
 		str++;
 	if (*str == '+' || *str == '-')
 	{
@@ -66,6 +69,11 @@ int	ft_atoi(const char *str)
 	{
 		rest = (rest * 10) + (*str - '0');
 		str++;
+	}
+	if (!ft_isdigit(*str))
+	{
+		ft_putstr("Error\n");
+		exit(0);
 	}
 	return (rest * n);
 }
