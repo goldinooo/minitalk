@@ -67,11 +67,6 @@ int	ft_atoi(const char *str)
 		rest = (rest * 10) + (*str - '0');
 		str++;
 	}
-	if (!ft_isdigit(*str))
-	{
-		ft_putstr("Error\n");
-		exit(0);
-	}
 	return (rest * n);
 }
 void	ft_putnbr(int nb)
