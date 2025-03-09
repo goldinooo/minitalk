@@ -51,7 +51,6 @@ void	send_bits_at_len(pid_t pid, char *str)
 
 int	main(int ac, char **av)
 {
-	setvbuf(stdout, NULL, _IONBF, 0);
 	pid_t				server_pid;
 	struct sigaction	sig;
 	struct sigaction	sig2;

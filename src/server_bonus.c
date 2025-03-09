@@ -24,6 +24,7 @@ void signal_handler(int signal, siginfo_t *info ,void *s)
 	static int	prev_pid;
 	static int	done;
 
+	(void)s;
 	if (info->si_pid != prev_pid)
 	{
 		prev_pid = info->si_pid;

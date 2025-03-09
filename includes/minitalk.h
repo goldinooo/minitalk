@@ -28,8 +28,8 @@ int		ft_atoi(const char *str);
 void	ft_putnbr(int n);
 
 void	signal_handler(int signum, siginfo_t *info, void *p);
-void	ft_signal_handler(int signal);
-void	send_bits(pid_t pid, char c);
+void	ft_signal_handler(int signal, siginfo_t *info, void *s);
+void	send_8bits(pid_t pid, char c);
 void	send_bits_at_len(pid_t pid, char *str);
 
 #endif
